@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { askAssistant, assistantSpeech, transcribeAudio } from "@/lib/assistant.functions";
 import bgUrl from "@/assets/interface.jpg";
 import { AuraMotion } from "@/components/aura-motion";
+import auraLotus from "@/assets/aura-lotus.webp";
 import { AuraAttachments } from "@/components/aura-attachments";
 import type { AuraAttachment } from "@/lib/aura-attachments";
 const bg = { url: bgUrl };
@@ -207,6 +208,7 @@ function Assistant({ userId, compact = false }: { userId: string; compact?: bool
     <>
       {!lab && !compact && <AuraMotion state={state} />}
       <Button variant="ghost" aria-label="Parler à l'assistant" data-state={state} data-lab={lab || compact ? "1" : undefined} data-dot={lab && !compact ? "1" : undefined} onClick={toggle} className={`aura-orb z-40 cursor-pointer outline-none ${lab || compact ? "aura-floating" : ""}`}>
+        {!lab && !compact && <span className="aura-lotus" aria-hidden="true"><span className="aura-lotus-halo" /><img src={auraLotus} alt="" draggable={false} /><img src={auraLotus} alt="" draggable={false} className="aura-lotus-reflect" /></span>}
         {compact && !lab && (state === 'thinking' ? <LoaderCircle className="animate-spin"/> : state === 'listening' || state === 'speaking' ? <Square/> : <AudioLines/>)}
       </Button>
       <AuraAttachments files={files} onChange={setFiles} busy={state === "thinking"} floating />

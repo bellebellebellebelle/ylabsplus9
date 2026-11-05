@@ -5,6 +5,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useServerFn } from '@tanstack/react-start';
 import { runWebSearch } from '@/lib/web-search.functions';
 import { Button } from '@/components/ui/button';
+import { LiveFeed, AgentsLive } from '@/components/lab/LiveFeed';
 
 type Activity = { kind: string; app_key: string | null; seconds_saved: number; created_at: string };
 type Auto = { id: string; name: string; status: 'draft' | 'active' | 'paused' };
@@ -97,13 +98,7 @@ export function Cockpit({ activity, ideasCount }: { activity: Activity[]; ideasC
   const monthDays = month ? new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate() : 0;
 
   return <div className="cockpit">
-    <section className="ck-card ck-aura">
-      <h2>Assistant IA principal</h2>
-      <button className="ck-orb" onClick={() => askAura()} aria-label="Parler à Aura"><span className="ck-face">◠ ◠<br />‿</span></button>
-      <p className="ck-greet">Bonjour ! Je suis Aura, votre assistante.<br />Que puis-je faire pour vous ?</p>
-      <div className="ck-prompts">{['Analyser mes idées', 'Créer un plan d’action', 'Résumer mes activités', 'Trouver des opportunités'].map(p => <button key={p} onClick={() => askAura(p)}>{p}</button>)}</div>
-      <form className="ck-ask" onSubmit={e => send(e, question, () => setQuestion(''))}><input value={question} onChange={e => setQuestion(e.target.value)} placeholder="Posez-moi une question…" aria-label="Question pour Aura" /><button aria-label="Envoyer"><Send size={16} /></button></form>
-    </section>
+    <LiveFeed />
 
     <div className="ck-top">
       <div className="ck-card ck-weather">{weather ? <><span className="ck-wicon">{weatherIcon(weather.code)}</span><div><strong>{weather.temp}°</strong><small>{weatherLabel(weather.code)}</small><small>📍 {weather.place}</small></div><div className="ck-mini"><span>↑ {weather.max}°</span><span>↓ {weather.min}°</span></div></> : <small>Autorisez la position pour voir la météo locale.</small>}</div>
@@ -118,14 +113,7 @@ export function Cockpit({ activity, ideasCount }: { activity: Activity[]; ideasC
       <Link to="/history" className="ck-link">Voir l’historique complet <ChevronRight size={12} /></Link>
     </section>
 
-    <section className="ck-card ck-web">
-      <header><h3><Globe size={15} />Recherche web IA</h3><span className="ck-pill">GPT-6 Sol</span></header>
-      <form className="ck-search" onSubmit={e => { e.preventDefault(); void searchWeb(search); }}><input value={search} maxLength={300} onChange={e => setSearch(e.target.value)} placeholder="Rechercher sur le web…" aria-label="Recherche web" /><Button type="submit" variant="ghost" size="icon" disabled={searching || search.trim().length < 2} aria-label="Lancer la recherche" title="Lancer la recherche"><Search size={14} /></Button></form>
-      {searching && <p role="status" className="text-muted-foreground">Recherche en cours…</p>}
-      {searchError && <p role="alert" className="auth-error">{searchError}</p>}
-      {webResult && <><div className="ck-answer" aria-live="polite"><small><Sparkles size={11} />Synthèse GPT-6 Sol</small><p className="whitespace-pre-wrap">{webResult.answer}</p></div><div className="ck-sources">{webResult.sources.map((source, i) => <a key={source.url} className="ck-result" href={source.url} target="_blank" rel="noopener noreferrer"><span className="ck-fav">{i + 1}</span><span><b>{source.title}</b><small>{source.snippet}</small></span><ExternalLink size={12} /></a>)}</div></>}
-      {!webResult && !searching && ['Tendances IA et productivité', 'Automatisation des relances clients', 'Assistants vocaux en entreprise'].map(query => <Button key={query} variant="ghost" className="ck-result" onClick={() => void searchWeb(query)}><span className="ck-fav"><Globe size={12} /></span><span><b>{query}</b></span><ChevronRight size={12} /></Button>)}
-    </section>
+    <AgentsLive />
 
     <section className="ck-card ck-list">
       <header><h3>Applications</h3><Link to="/apps">Toutes les apps</Link></header>
