@@ -1,0 +1,296 @@
+/* Styles of the imported TEP app, scoped under .tep-theme so other apps keep their look. */
+
+/* Design system du tableau virtuel : couleurs de post-it, ombres, écriture. */
+
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-agent: var(--agent);
+  --color-tool: var(--tool);
+  --color-action: var(--action);
+  --color-problem: var(--problem);
+  --color-note-foreground: var(--note-foreground);
+  --color-note-yellow: var(--note-yellow);
+  --color-note-pink: var(--note-pink);
+  --color-note-mint: var(--note-mint);
+  --color-note-sky: var(--note-sky);
+  --color-note-lilac: var(--note-lilac);
+  --color-note-orange: var(--note-orange);
+  --color-note-lime: var(--note-lime);
+  --color-note-sand: var(--note-sand);
+  --color-note-coral: var(--note-coral);
+  --color-board-line: var(--board-line);
+  --shadow-note-lifted: 0 2px 4px oklch(0 0 0 / 0.3), 0 18px 32px -12px oklch(0 0 0 / 0.45);
+}
+
+
+.tep-theme {
+  --radius: 0.625rem;
+  --background: oklch(0.19 0.02 250);
+  --foreground: oklch(0.96 0.01 250);
+  --card: oklch(0.24 0.022 250);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.24 0.022 250);
+  --popover-foreground: oklch(0.96 0.01 250);
+  --primary: oklch(0.72 0.16 55);
+  --primary-foreground: oklch(0.2 0.02 250);
+  --secondary: oklch(0.28 0.024 250);
+  --secondary-foreground: oklch(0.96 0.01 250);
+  --muted: oklch(0.28 0.024 250);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.32 0.03 250);
+  --accent-foreground: oklch(0.96 0.01 250);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.98 0.005 250);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.16 55);
+  --chart-1: oklch(0.72 0.16 55);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.22 0.02 250);
+  --sidebar-foreground: oklch(0.96 0.01 250);
+  --sidebar-primary: oklch(0.72 0.16 55);
+  --sidebar-primary-foreground: oklch(0.2 0.02 250);
+  --sidebar-accent: oklch(0.28 0.024 250);
+  --sidebar-accent-foreground: oklch(0.96 0.01 250);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.72 0.16 55);
+
+  --note-foreground: oklch(0.26 0.03 80);
+  --note-yellow: oklch(0.92 0.13 95);
+  --note-pink: oklch(0.87 0.09 5);
+  --note-mint: oklch(0.89 0.09 155);
+  --note-sky: oklch(0.88 0.07 230);
+  --note-lilac: oklch(0.87 0.08 300);
+  --note-orange: oklch(0.86 0.13 65);
+  --note-lime: oklch(0.91 0.14 125);
+  --note-sand: oklch(0.9 0.05 85);
+  --note-coral: oklch(0.85 0.11 30);
+  --board: oklch(0.19 0.02 250);
+  --board-line: oklch(1 0 0 / 6%);
+}
+
+
+
+/* Tableau de résolution (Résolvo) : thème sombre limité à ce tableau. */
+.tep-theme .resolvo {
+  --radius: 0.9rem;
+  --background: oklch(0.19 0.021 250);
+  --foreground: oklch(0.96 0.008 240);
+  --surface: oklch(0.235 0.024 250);
+  --surface-2: oklch(0.28 0.028 250);
+  --card: oklch(0.235 0.024 250);
+  --card-foreground: oklch(0.96 0.008 240);
+  --popover: oklch(0.235 0.024 250);
+  --popover-foreground: oklch(0.96 0.008 240);
+  --primary: oklch(0.82 0.155 172);
+  --primary-foreground: oklch(0.2 0.03 200);
+  --secondary: oklch(0.3 0.028 250);
+  --secondary-foreground: oklch(0.95 0.008 240);
+  --muted: oklch(0.28 0.024 250);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.82 0.14 78);
+  --accent-foreground: oklch(0.22 0.03 60);
+  --destructive: oklch(0.63 0.2 22);
+  --border: oklch(0.33 0.026 250);
+  --input: oklch(0.33 0.026 250);
+  --ring: oklch(0.82 0.155 172);
+  --agent: oklch(0.82 0.155 172);
+  --tool: oklch(0.75 0.12 250);
+  --action: oklch(0.82 0.14 78);
+  --problem: oklch(0.75 0.15 20);
+}
+.tep-theme .resolvo .font-display, .tep-theme .resolvo h1, .tep-theme .resolvo h2, .tep-theme .resolvo h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.tep-theme .board-grid {
+  background-image: radial-gradient(circle at 1px 1px, oklch(0.4 0.03 250 / 0.5) 1px, transparent 0);
+  background-size: 26px 26px;
+}
+
+.tep-theme .glass {
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+/* Tableau de recrutement : thème scopé sous .recrutement */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-canvas-grid: var(--canvas-grid);
+  --color-note-violet: var(--note-violet);
+  --color-note-amber: var(--note-amber);
+  --color-note-rose: var(--note-rose);
+  --color-note-cyan: var(--note-cyan);
+}
+
+.tep-theme .recrutement {
+  --radius: 0.9rem;
+  --background: oklch(0.19 0.018 260);
+  --foreground: oklch(0.96 0.005 250);
+  --canvas: oklch(0.16 0.02 262);
+  --canvas-grid: oklch(0.32 0.03 262);
+  --surface: oklch(0.235 0.02 262);
+  --surface-2: oklch(0.28 0.022 262);
+  --card: oklch(0.235 0.02 262);
+  --card-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(0.235 0.02 262);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.78 0.16 82);
+  --primary-foreground: oklch(0.2 0.03 80);
+  --secondary: oklch(0.3 0.025 262);
+  --secondary-foreground: oklch(0.95 0.005 250);
+  --muted: oklch(0.28 0.02 262);
+  --muted-foreground: oklch(0.72 0.02 258);
+  --accent: oklch(0.72 0.13 200);
+  --accent-foreground: oklch(0.18 0.03 200);
+  --destructive: oklch(0.62 0.2 22);
+  --destructive-foreground: oklch(0.98 0.005 250);
+  --border: oklch(0.34 0.022 262);
+  --input: oklch(0.32 0.022 262);
+  --ring: oklch(0.78 0.16 82);
+  --ink: oklch(0.22 0.03 260);
+  --note-sky: oklch(0.86 0.09 230);
+  --note-violet: oklch(0.85 0.09 300);
+  --note-amber: oklch(0.9 0.11 90);
+  --note-lime: oklch(0.9 0.12 130);
+  --note-rose: oklch(0.86 0.09 15);
+  --note-cyan: oklch(0.88 0.09 195);
+  color: var(--foreground);
+  overscroll-behavior: none;
+}
+.tep-theme .recrutement h1, .tep-theme .recrutement h2, .tep-theme .recrutement h3, .tep-theme .recrutement .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.tep-theme .canvas-grid {
+  background-color: var(--color-canvas);
+  background-image: radial-gradient(var(--color-canvas-grid) 1px, transparent 1px);
+}
+
+.tep-theme .glass-panel {
+  background: color-mix(in oklch, var(--color-surface) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 18px 40px -18px oklch(0 0 0 / 0.7);
+}
+
+.tep-theme .note-shadow {
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.35) inset,
+    0 14px 30px -14px oklch(0 0 0 / 0.75);
+}
+
+/* Tableau de prospection : thème clair scopé sous .prospection */
+.tep-theme .prospection {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --note-amber: oklch(0.93 0.09 90);
+  --note-lime: oklch(0.92 0.09 140);
+  --note-sky: oklch(0.92 0.06 230);
+  --note-rose: oklch(0.92 0.06 15);
+  --note-violet: oklch(0.92 0.06 300);
+  --canvas: oklch(0.97 0.005 250);
+  --canvas-grid: oklch(0.9 0.01 250);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Tableau Création de contenu */
+.tep-theme {
+  --ig: oklch(0.7 0.2 12);
+  --tt: oklch(0.82 0.16 180);
+  --li: oklch(0.65 0.15 240);
+  --x: oklch(0.55 0.01 275);
+  --yt: oklch(0.65 0.22 25);
+  --neon: oklch(0.82 0.16 180);
+}
+@theme inline {
+  --color-ig: var(--ig);
+  --color-tt: var(--tt);
+  --color-li: var(--li);
+  --color-x: var(--x);
+  --color-yt: var(--yt);
+  --color-neon: var(--neon);
+}
+.tep-theme .glow {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent),
+    0 18px 60px -20px color-mix(in oklab, var(--primary) 55%, transparent);
+}
+.tep-theme .grid-bg {
+  background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--border) 90%, transparent) 1px, transparent 0);
+}
+.tep-theme .text-gradient {
+  background: linear-gradient(100deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Smart Teams board tokens */
+.tep-theme {
+  --surface-foreground: oklch(0.968 0.006 250);
+  --note-marketing: oklch(0.83 0.13 12);
+  --note-finance: oklch(0.85 0.14 155);
+  --note-vente: oklch(0.88 0.15 88);
+  --note-achat: oklch(0.83 0.11 235);
+  --note-rh: oklch(0.83 0.12 305);
+  --note-admin: oklch(0.87 0.06 250);
+  --note-autre: oklch(0.88 0.15 128);
+  --note-ink: oklch(0.22 0.03 264);
+}
+.tep-theme .note-surface {
+  color: var(--color-note-ink);
+  box-shadow: var(--shadow-note, 0 10px 24px -12px oklch(0 0 0 / 0.5));
+}
+.tep-theme .scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* Imported TEP app: scoped base + tokens that differ from other apps */
+.tep-theme { background-color: var(--background); color: var(--foreground); font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; }
+.tep-theme * { border-color: var(--border); }
+.tep-theme .font-display { font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; }
+.tep-theme .font-hand { font-family: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive; }
+.tep-theme .shadow-note { box-shadow: 0 1px 2px oklch(0 0 0 / 0.25), 0 8px 16px -8px oklch(0 0 0 / 0.35); }
+.tep-theme .shadow-soft { box-shadow: 0 1px 2px oklch(0.25 0.03 220 / 0.06), 0 8px 24px oklch(0.25 0.03 220 / 0.08); }
+.tep-theme { --shadow-note: 0 1px 2px oklch(0 0 0 / 0.25), 0 8px 16px -8px oklch(0 0 0 / 0.35); }

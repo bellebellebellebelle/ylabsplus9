@@ -1,0 +1,83 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792224626583,
+      "tag": "0000_talkbuddy_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792224686733,
+      "tag": "0001_mymackenzy_automations",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792236562873,
+      "tag": "0002_apply_source_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792238315111,
+      "tag": "0003_smart_teams_isolated_workspace",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792244980826,
+      "tag": "0004_noop_apply_pending",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1793629993803,
+      "tag": "0005_import_sky_suite",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793635549685,
+      "tag": "0006_apply_imported_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1793636572742,
+      "tag": "0007_import_tep_app_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1793719637848,
+      "tag": "0008_apply_imported_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1793724870623,
+      "tag": "0009_noop_apply_pending",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1793729526298,
+      "tag": "0010_apply_imported_repo_schema",
+      "breakpoints": true
+    }
+  ]
+}
