@@ -1,0 +1,1 @@
+ALTER TABLE public.st_agents ADD COLUMN IF NOT EXISTS lab_apps text[] NOT NULL DEFAULT '{}';
