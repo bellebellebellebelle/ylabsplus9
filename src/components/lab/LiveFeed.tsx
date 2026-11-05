@@ -129,7 +129,7 @@ export function AgentsLive() {
     const names = new Map((au.data ?? []).map(a => [a.id, a.name]));
     const list: Event[] = [
       ...(st.data ?? []).map(t => ({ id: `st${t.id}`, at: t.updated_at, kind: 'team' as const, title: t.title, detail: t.status === 'done' ? 'Mission terminée · Smart Teams' : t.status === 'running' || t.status === 'in_progress' ? 'Agent au travail · Smart Teams' : `${t.status} · Smart Teams`, live: t.status === 'running' || t.status === 'in_progress' })),
-      ...(ex.data ?? []).map(e => ({ id: `ex${e.id}`, at: e.started_at, kind: 'auto' as const, title: names.get(e.automation_id) ?? 'Automatisation', detail: `${e.status === 'running' ? 'En cours' : e.status === 'success' ? 'Réussie' : e.status === 'failed' ? 'Échec' : e.status} · MyMackenzy`, live: e.status === 'running' })),
+      ...(ex.data ?? []).map(e => ({ id: `ex${e.id}`, at: e.started_at, kind: 'auto' as const, title: names.get(e.automation_id) ?? 'Automatisation', detail: `${e.status === 'running' ? 'En cours' : e.status === 'success' ? 'Réussie' : e.status === 'error' ? 'Échec' : e.status === 'pending' ? 'En attente' : e.status} · MyMackenzy`, live: e.status === 'running' })),
       ...(la.data ?? []).slice(0, 8).map(l => ({ id: `la${l.id}`, at: l.created_at, kind: 'lab' as const, title: labKinds[l.kind] ?? l.kind, detail: l.app_key ? `${l.app_key} · Laboratoire` : 'Laboratoire', live: false })),
     ].sort((a, b) => b.at.localeCompare(a.at)).slice(0, 9);
     setEvents(list);
